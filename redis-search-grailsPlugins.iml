@@ -39,8 +39,6 @@
           <root url="jar://$USER_HOME$/.grails/ivy-cache/redis.clients/jedis/jars/jedis-2.0.0.jar!/" />
           <root url="jar://$USER_HOME$/.grails/ivy-cache/org.apache.lucene/lucene-analyzers-common/jars/lucene-analyzers-common-4.1.0.jar!/" />
           <root url="jar://$USER_HOME$/.grails/ivy-cache/org.apache.lucene/lucene-core/jars/lucene-core-4.1.0.jar!/" />
-          <root url="jar://$USER_HOME$/redis-search/redis-search/lib/pinyin4j-2.5.0.jar!/" />
-          <root url="jar://$USER_HOME$/redis-search/redis-search/lib/mmseg4j-all-with-dic-1.9.0.v20120712-SNAPSHOT.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

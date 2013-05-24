@@ -24,9 +24,6 @@ grails.project.dependency.resolution = {
     dependencies {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes eg.
 
-        // runtime 'mysql:mysql-connector-java:5.1.21'
-//        compile 'com.chenlb.mmseg4j:mmseg4j-core:1.9.0'
-//        compile 'com.chenlb.mmseg4j:mmseg4j-analysis:1.9.0'
         compile 'org.apache.lucene:lucene-core:4.1.0'
         compile 'org.apache.lucene:lucene-analyzers-common:4.1.0'
         compile 'redis.clients:jedis:2.0.0'
@@ -34,6 +31,8 @@ grails.project.dependency.resolution = {
     }
 //
     plugins {
+
+        runtime ":hibernate:$grailsVersion"
         build(":tomcat:$grailsVersion",
               ":release:2.2.0",
               ":rest-client-builder:1.0.3") {

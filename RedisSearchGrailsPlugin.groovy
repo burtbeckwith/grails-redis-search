@@ -1,10 +1,11 @@
 import com.qiyi.redis.search.EntityConfig
 import com.qiyi.redis.search.Index
 import com.qiyi.redis.search.Search
+import grails.converters.JSON
 import org.grails.datastore.mapping.reflect.ClassPropertyFetcher
 import redis.clients.jedis.JedisPool
 import redis.clients.jedis.JedisPoolConfig
-//import com.trigonic.jedis.NamespaceJedisPool
+//import com.trigonic.jedis.*
 
 class RedisSearchGrailsPlugin {
     // the plugin version
@@ -83,6 +84,7 @@ Brief summary/description of the plugin.
             def pinyin_match = redissearchConfig.pinyin_match ? redissearchConfig.pinyin_match : false
             if (host && port) {
                 def redisPool = new JedisPool(jedis_config, host, port)
+//                def redisPool = new NamespaceJedisPool(jedis_config,host,port).withNamespace(ns)
                 def redis = redisPool.getResource()
                 Search.configure().redisPool = redisPool
                 Search.configure().pinyin_match = pinyin_match
@@ -96,7 +98,6 @@ Brief summary/description of the plugin.
         for (domainClass in application.domainClasses) {
 
             def searchClosure = ClassPropertyFetcher.forClass(domainClass.clazz).getStaticPropertyValue('redissearch', Map)
-
             if (searchClosure) {
                 domainClass.metaClass.redis_search_fields_to_hash = { ext_fields ->
                     def exts = []
@@ -124,8 +125,8 @@ Brief summary/description of the plugin.
 
                 domainClass.metaClass.redis_search_index_create = {
                     def instance = delegate
-                    EntityConfig entity = searchMapping.get(domainClass.clazz.name)
-                    def index = new Index([title: instance."${entity.title_field}", id: instance."${entity.id_field}" + "", type: entity.type ? entity.type : domainClass.getShortName(),prefix_index_enable:entity.prefix_index_enable])
+                    EntityConfig entity = searchMapping.get(instance.class.name)
+                    def index = new Index([title: instance."${entity.title_field}", id: instance."${entity.id_field}" + "", type: instance.class.getSimpleName(),prefix_index_enable:entity.prefix_index_enable])
                     index.save()
                     index = null
                     return true
@@ -133,24 +134,26 @@ Brief summary/description of the plugin.
 
                 domainClass.metaClass.redis_search_index_delete = { titles ->
                     def instance = delegate
-                    EntityConfig entity = searchMapping.get(domainClass.clazz.name)
+                    EntityConfig entity = searchMapping.get(instance.class.name)
                     titles.unique().each { title ->
-                        Index.remove([id:instance."${entity.id_field}" + "", title: instance."${entity.title_field}", type: entity.type ? entity.type : instance.class.getSimpleName()])
+                        Index.remove([id:instance."${entity.id_field}" + "", title: instance."${entity.title_field}", type: instance.class.getSimpleName()])
                     }
                     return true
                 }
 
                 domainClass.metaClass.beforeDelete = {
                     def titles = []
-                    EntityConfig entity = searchMapping.get(domainClass.clazz.name)
+                    def instance = delegate
+                    EntityConfig entity = searchMapping.get(instance.class.name)
                     titles = redis_search_alias_value(entity.aliases_field)
                     titles << entity.title_field
 
                     redis_search_index_delete(titles)
                 }
 
-                domainClass.metaClass.redis_search_index_need_reindex = { instance->
-                    EntityConfig entity = searchMapping.get(domainClass.clazz.name)
+                domainClass.metaClass.redis_search_index_need_reindex = {
+                    def instance = delegate
+                    EntityConfig entity = searchMapping.get(instance.class.name)
                     if (instance.isDirty()){
                         if (instance.isDirty("${entity.title_field}")){
                             return true
@@ -163,12 +166,11 @@ Brief summary/description of the plugin.
                 }
 
                 domainClass.metaClass.beforeUpdate = {
-                    EntityConfig entity = searchMapping.get(domainClass.clazz.name)
-                    def instance = delegate
-                    if (redis_search_index_need_reindex(instance)) {
+                    EntityConfig entity = searchMapping.get(delegate.class.name)
+                    if (redis_search_index_need_reindex(delegate)) {
                         def titles = []
                         titles = redis_search_alias_value("${entity.aliases_field}")
-                        titles << instance.getPersistentValue("${entity.title_field}")
+                        titles << delegate.getPersistentValue("${entity.title_field}")
                         redis_search_index_delete(titles)
                     }
                     return true

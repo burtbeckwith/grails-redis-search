@@ -22,6 +22,7 @@ class EntityConfig {
 
     public EntityConfig(options = [:]) {
         title_field = options['title_field'] ? options['title_field'] : title_field
+        type = options['type'] ? options['type']:type
         aliases_field = options['aliases_field'] ? options['aliases_field'] : aliases_field
         prefix_index_enable = options['prefix_index_enable'] ? options['prefix_index_enable'] : false
         ext_fields = options['ext_fields'] ? options['ext_fields'] : []

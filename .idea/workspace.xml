@@ -13,7 +13,7 @@
     <file path="/Base.groovy" changelist="2a98d753-9083-4b85-978d-0b1b8a2ddd33" time="1367136514111" ignored="false" />
     <file path="$USER_HOME$/grails-hibernate-search-plugin-master/HibernateSearchGrailsPlugin.groovy" changelist="2a98d753-9083-4b85-978d-0b1b8a2ddd33" time="1367131382895" ignored="false" />
     <file path="/HibernateSearchGrailsPlugin.groovy" changelist="2a98d753-9083-4b85-978d-0b1b8a2ddd33" time="1367131331900" ignored="false" />
-    <file path="/Dummy.txt" changelist="2a98d753-9083-4b85-978d-0b1b8a2ddd33" time="1367138078838" ignored="false" />
+    <file path="/Dummy.txt" changelist="2a98d753-9083-4b85-978d-0b1b8a2ddd33" time="1369362009263" ignored="false" />
     <file path="$PROJECT_DIR$/../study/grails-app/conf/BuildConfig.groovy" changelist="2a98d753-9083-4b85-978d-0b1b8a2ddd33" time="1367467118022" ignored="false" />
     <file path="$PROJECT_DIR$/../study/grails-app/domain/study/User.groovy" changelist="2a98d753-9083-4b85-978d-0b1b8a2ddd33" time="1367462508678" ignored="false" />
     <file path="/User.groovy" changelist="2a98d753-9083-4b85-978d-0b1b8a2ddd33" time="1367145597548" ignored="false" />
@@ -21,6 +21,8 @@
     <file path="$PROJECT_DIR$/.idea/workspace.xml" changelist="2a98d753-9083-4b85-978d-0b1b8a2ddd33" time="1367201802461" ignored="false" />
     <file path="$PROJECT_DIR$/../study/target/stacktrace.log" changelist="2a98d753-9083-4b85-978d-0b1b8a2ddd33" time="1367467592766" ignored="false" />
     <file path="/SearchConfig.groovy" changelist="2a98d753-9083-4b85-978d-0b1b8a2ddd33" time="1367467306679" ignored="false" />
+    <file path="/_Install.groovy" changelist="2a98d753-9083-4b85-978d-0b1b8a2ddd33" time="1369361911122" ignored="false" />
+    <file path="/a.dummy" changelist="2a98d753-9083-4b85-978d-0b1b8a2ddd33" time="1369362002657" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,7 +134,16 @@
       <file leaf-file-name="RedisSearchGrailsPlugin.groovy" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/RedisSearchGrailsPlugin.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="101" column="8" selection-start="4117" selection-end="4117" vertical-scroll-proportion="0.42711863">
+            <state line="40" column="1" selection-start="1284" selection-end="1284" vertical-scroll-proportion="0.77693146">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="_Install.groovy" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scripts/_Install.groovy">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="12" column="24" selection-start="476" selection-end="476" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -164,13 +175,15 @@
         <option value="$PROJECT_DIR$/src/groovy/com/qiyi/redis/search/Index.groovy" />
         <option value="$PROJECT_DIR$/src/groovy/com/qiyi/redis/search/Search.groovy" />
         <option value="$PROJECT_DIR$/src/groovy/com/qiyi/redis/search/Base.groovy" />
+        <option value="$PROJECT_DIR$/scripts/_Install.groovy" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="y" value="22" />
-    <option name="width" value="1280" />
-    <option name="height" value="774" />
+    <option name="x" value="1280" />
+    <option name="y" value="-188" />
+    <option name="width" value="1920" />
+    <option name="height" value="1080" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -508,7 +521,7 @@
     <option name="STATE" value="0" />
   </component>
   <component name="ProjectView">
-    <navigator proportions="" version="1" splitterProportion="0.5">
+    <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -519,7 +532,20 @@
       <autoscrollFromSource />
       <sortByType />
     </navigator>
-    <panes />
+    <panes>
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="redis-search" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="project.structure.last.edited" value="Project" />
@@ -536,8 +562,8 @@
     <property name="MemberChooser.showClasses" value="true" />
     <property name="FullScreen" value="false" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -557,6 +583,19 @@
       <option name="SHMEM_ADDRESS" value="javadebug" />
       <option name="HOST" value="localhost" />
       <option name="PORT" value="5005" />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
@@ -585,19 +624,6 @@
       <envs />
       <properties />
       <listeners />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -652,7 +678,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1280" height="774" extended-state="0" />
+    <frame x="1280" y="-188" width="1920" height="1080" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -665,7 +691,7 @@
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Grails View" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1758509" sideWeight="0.70416665" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Grails View" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.11579509" sideWeight="0.8822917" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -674,9 +700,9 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16168623" sideWeight="0.7864583" order="4" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16168623" sideWeight="0.70416665" order="4" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29583332" sideWeight="0.9866595" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29583332" sideWeight="0.9866595" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -740,13 +766,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/groovy/com/qiyi/redis/search/SearchConfig.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="18" selection-start="412" selection-end="417" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/groovy/com/qiyi/redis/search/Search.groovy">
       <provider selected="true" editor-type-id="text-editor">
         <state line="125" column="44" selection-start="4122" selection-end="4122" vertical-scroll-proportion="0.0">
@@ -843,9 +862,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/_Install.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="24" selection-start="476" selection-end="476" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/RedisSearchGrailsPlugin.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="101" column="8" selection-start="4117" selection-end="4117" vertical-scroll-proportion="0.42711863">
+        <state line="40" column="1" selection-start="1284" selection-end="1284" vertical-scroll-proportion="0.77693146">
           <folding />
         </state>
       </provider>
@@ -858,7 +884,7 @@
           <value>
             <GrailsSettings>
               <option name="buildConfigCrc" value="-1109313641" />
-              <option name="pluginDependenciesCrc" value="-1402822010" />
+              <option name="pluginDependenciesCrc" value="1327952511" />
               <option name="properties">
                 <map>
                   <entry key="grails.global.plugins.dir" value="$USER_HOME$/.grails/2.2.1/global-plugins" />

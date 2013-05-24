@@ -108,14 +108,13 @@ Brief summary/description of the plugin.
                     return exts
                 }
 
-                domainClass.metaClass.redis_search_alias_value = { field ->
+                domainClass.metaClass.redis_search_alias_value = { instance,field ->
                     if ( !field || "" == field) {
                         return []
                     }else{
-                        def instance = delegate
                         def val = instance.getPersistentValue(field)
-                        if (![String, ArrayList].contains(val))
-                            return
+                        if (val || ![String, ArrayList].contains(val.class))
+                            return []
                         if (val instanceof String) {
                             val = val.toString().split(",")
                         }
@@ -143,16 +142,13 @@ Brief summary/description of the plugin.
 
                 domainClass.metaClass.beforeDelete = {
                     def titles = []
-                    def instance = delegate
-                    EntityConfig entity = searchMapping.get(instance.class.name)
-                    titles = redis_search_alias_value(entity.aliases_field)
-                    titles << entity.title_field
-
+                    EntityConfig entity = searchMapping.get(delegate.class.name)
+                    titles = redis_search_alias_value(delegate,entity.aliases_field)
+                    titles << delegate."${entity.title_field}"
                     redis_search_index_delete(titles)
                 }
 
-                domainClass.metaClass.redis_search_index_need_reindex = {
-                    def instance = delegate
+                domainClass.metaClass.redis_search_index_need_reindex = { instance->
                     EntityConfig entity = searchMapping.get(instance.class.name)
                     if (instance.isDirty()){
                         if (instance.isDirty("${entity.title_field}")){
@@ -167,10 +163,12 @@ Brief summary/description of the plugin.
 
                 domainClass.metaClass.beforeUpdate = {
                     EntityConfig entity = searchMapping.get(delegate.class.name)
+                    println "need redindex ${redis_search_index_need_reindex(delegate)}"
                     if (redis_search_index_need_reindex(delegate)) {
                         def titles = []
-                        titles = redis_search_alias_value("${entity.aliases_field}")
-                        titles << delegate.getPersistentValue("${entity.title_field}")
+                        titles = redis_search_alias_value(delegate,entity.aliases_field)
+                        titles << delegate."${entity.title_field}"
+                        println  titles
                         redis_search_index_delete(titles)
                     }
                     return true

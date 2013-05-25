@@ -15,6 +15,9 @@
   </component>
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
+    <content url="file://$USER_HOME$/.grails/2.2.1/projects/redis-search/plugins/hibernate-2.2.1">
+      <sourceFolder url="file://$USER_HOME$/.grails/2.2.1/projects/redis-search/plugins/hibernate-2.2.1/grails-app/i18n" isTestSource="false" />
+    </content>
     <content url="file://$USER_HOME$/.grails/2.2.1/projects/redis-search/plugins/release-2.2.0">
       <sourceFolder url="file://$USER_HOME$/.grails/2.2.1/projects/redis-search/plugins/release-2.2.0/src/java" isTestSource="false" />
       <sourceFolder url="file://$USER_HOME$/.grails/2.2.1/projects/redis-search/plugins/release-2.2.0/src/groovy" isTestSource="false" />

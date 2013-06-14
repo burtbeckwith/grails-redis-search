@@ -174,7 +174,6 @@ Brief summary/description of the plugin.
                 }
 
                 domainClass.metaClass.afterUpdate = {
-                    println "${delegate.class.getFields()} &&  ${delegate.deleteFlag}"
                     if (delegate.deleteFlag) {
                         EntityConfig entity = searchMapping.get(delegate.class.name)
                         def titles = []

@@ -1,4 +1,4 @@
-本插件基于https://github.com/huacnlee/redis-search改写而成，李顺华同学的源码基于Ruby实现，这里用grails改写。
+本插件基于[huacnlee/redis-search](https://github.com/huacnlee/redis-search)改写而成，李顺华同学的源码基于Ruby实现，这里用grails改写。
 开发工具：IntelliJ Idea
 
 
@@ -86,3 +86,17 @@ grails.plugin.location.redissearch = "yourpath/redis-search"
             });
         });
     </script>
+
+#####可以在bootstrap中增加如下代码，为数据库中已有的记录创建索引
+	Search.config.redisPool.getResource().flushDB()
+        for (domainClass in grailsApplication.domainClasses) {
+            def searchClosure = ClassPropertyFetcher.forClass(domainClass.clazz).getStaticPropertyValue('redissearch', Map)
+            if (searchClosure) {
+                domainClass.clazz.list().each {
+                    if (!it.deleteFlag) {
+                        def field = searchClosure['title_field'];
+                        new Index([id: it.id + "", title: it."${field}", type: domainClass.getShortName(), prefix_index_enable: true]).save()
+                    }
+                }
+            }
+        }

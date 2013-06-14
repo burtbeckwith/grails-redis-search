@@ -1,0 +1,30 @@
+<plugin name='redis-search' version='0.1' grailsVersion='2.2 &gt; *'>
+  <author>kexiaocheng</author>
+  <title>Redis Search Plugin</title>
+  <description>Brief summary/description of the plugin.
+</description>
+  <documentation>http://grails.org/plugin/redis-redis</documentation>
+  <type>RedisSearchGrailsPlugin</type>
+  <resources />
+  <repositories>
+    <repository name='grailsCentral' url='http://grails.org/plugins' />
+    <repository name='mavenCentral' url='http://repo1.maven.org/maven2/' />
+    <repository name='http://repository.codehaus.org' url='http://repository.codehaus.org/' />
+    <repository name='http://repository.jboss.com/maven2/' url='http://repository.jboss.com/maven2/' />
+  </repositories>
+  <dependencies>
+    <compile>
+      <dependency group='org.apache.lucene' name='lucene-core' version='4.1.0' />
+      <dependency group='redis.clients' name='jedis' version='2.0.0' />
+      <dependency group='org.apache.lucene' name='lucene-analyzers-common' version='4.1.0' />
+      <dependency group='com.trigonic' name='jedis-namespace' version='0.1' />
+    </compile>
+  </dependencies>
+  <plugins>
+    <runtime>
+      <plugin group='org.grails.plugins' name='hibernate' version='2.2.1' />
+    </runtime>
+  </plugins>
+  <runtimePluginRequirements />
+  <behavior />
+</plugin>

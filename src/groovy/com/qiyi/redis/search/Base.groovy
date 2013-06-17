@@ -3,24 +3,20 @@ package com.qiyi.redis.search
 import grails.converters.deep.JSON
 
 /**
- * Created with IntelliJ IDEA.
- * User: kxc
- * Date: 13-4-28
- * Time: 上午9:42
- * To change this template use File | Settings | File Templates.
+ * @author kxc
  */
 class EntityConfig {
 
     def title_field
     def aliases_field
-    def id_field  = "id"
+    String id_field  = "id"
     def ext_fields
     def type
     def condition_fields
     def score_field
-    def prefix_index_enable = false
+    boolean prefix_index_enable = false
 
-    public EntityConfig(options = [:]) {
+    EntityConfig(options = [:]) {
         title_field = options['title_field'] ? options['title_field'] : title_field
         type = options['type'] ? options['type']:type
         aliases_field = options['aliases_field'] ? options['aliases_field'] : aliases_field

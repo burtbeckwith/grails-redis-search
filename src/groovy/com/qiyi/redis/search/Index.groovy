@@ -3,30 +3,21 @@ package com.qiyi.redis.search
 import grails.converters.JSON
 
 /**
- * Created with IntelliJ IDEA.
- * User: kxc
- * Date: 13-4-27
- * Time: 下午2:50
- * To change this template use File | Settings | File Templates.
+ * @author kxc
  */
 class Index {
     def type
     def title
     def id
     def score
-    def aliases
-    def exts
-    def condition_fields
-    def prefix_index_enable
-    def jedis;
+    def aliases = []
+    def exts = []
+    def condition_fields = []
+    boolean prefix_index_enable = true
+    def jedis
 
-    public Index(options = [:]) {
+    Index(options = [:]) {
 //        default data
-        this.condition_fields = []
-        this.exts = []
-        this.aliases = []
-        this.prefix_index_enable = true
-
         options.each { key, value ->
             this."${key}" = value
         }
@@ -73,7 +64,7 @@ class Index {
             save_prefix_index()
     }
 
-    static remove(options = [:]) {
+    static void remove(options = [:]) {
         def type = options['type']
         def jedis = Search.configure().redisPool.getResource()
         jedis.hdel(type, options['id'])
@@ -85,7 +76,7 @@ class Index {
         jedis.srem(Search.mk_sets_key(type, options['title']), options['id'])
     }
 
-    static private split_words_for_index(title) {
+    static private void split_words_for_index(title) {
         def words = Search.split(title)
         if (Search.configure().pinyin_match) {
             def pinyin_full = Search.split_pinyin(title)
@@ -97,7 +88,7 @@ class Index {
         words.unique()
     }
 
-     private save_prefix_index() {
+     private void save_prefix_index() {
         this.aliases.each { val ->
             def words = []
             words << val.toLowerCase()

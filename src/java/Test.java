@@ -1,15 +1,15 @@
-import com.chenlb.mmseg4j.*;
-
 import java.io.IOException;
 import java.io.Reader;
 import java.io.StringReader;
 
+import com.chenlb.mmseg4j.Dictionary;
+import com.chenlb.mmseg4j.MMSeg;
+import com.chenlb.mmseg4j.Seg;
+import com.chenlb.mmseg4j.SimpleSeg;
+import com.chenlb.mmseg4j.Word;
+
 /**
- * Created with IntelliJ IDEA.
- * User: kxc
- * Date: 13-5-8
- * Time: 上午10:49
- * To change this template use File | Settings | File Templates.
+ * @author kxc
  */
 public class Test {
 

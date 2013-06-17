@@ -4,15 +4,16 @@ import org.codehaus.groovy.grails.orm.hibernate.ConfigurableLocalSessionFactoryB
 import org.grails.datastore.mapping.reflect.ClassPropertyFetcher
 import org.hibernate.HibernateException
 import org.hibernate.cfg.Configuration
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 
 /**
- * Created with IntelliJ IDEA.
- * User: kxc
- * Date: 13-5-2
- * Time: 下午5:17
- * To change this template use File | Settings | File Templates.
+ * @author kxc
  */
 class RedisSearchConfigureLocalSessionFactoryBean extends ConfigurableLocalSessionFactoryBean {
+
+    private Logger log = LoggerFactory.getLogger(getClass())
+
     @Override
     protected void postProcessConfiguration(Configuration config) throws HibernateException {
         super.postProcessConfiguration(config)
@@ -20,7 +21,7 @@ class RedisSearchConfigureLocalSessionFactoryBean extends ConfigurableLocalSessi
         try {
             def properties = config.properties
 
-            def searchMapping = new HashMap()
+            def searchMapping = [:]
 
             grailsApplication.domainClasses.each {
                 def searchClosure = ClassPropertyFetcher.forClass(it.clazz).getStaticPropertyValue('redissearch', Closure)
@@ -38,7 +39,7 @@ class RedisSearchConfigureLocalSessionFactoryBean extends ConfigurableLocalSessi
             properties.put("redis_search", searchMapping)
 
         }catch (Exception e){
-            e.printStackTrace()
+            log.error e.message, e
         }
     }
 }

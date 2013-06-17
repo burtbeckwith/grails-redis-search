@@ -1,24 +1,21 @@
 package com.qiyi.redis.search
 
-import com.chenlb.mmseg4j.ComplexSeg
-import com.chenlb.mmseg4j.MMSeg
-import com.chenlb.mmseg4j.Seg
-import com.chenlb.mmseg4j.Word
-import com.chenlb.mmseg4j.Dictionary
-import com.qiyi.redis.search.utils.PinyinUtil
 import grails.converters.JSON
+
 import redis.clients.jedis.SortingParams
 
+import com.chenlb.mmseg4j.ComplexSeg
+import com.chenlb.mmseg4j.Dictionary
+import com.chenlb.mmseg4j.MMSeg
+import com.chenlb.mmseg4j.Seg
+import com.qiyi.redis.search.utils.PinyinUtil
+
 /**
- * Created with IntelliJ IDEA.
- * User: kxc
- * Date: 13-4-27
- * Time: 下午2:30
- * To change this template use File | Settings | File Templates.
+ * @author kxc
  */
 class Search {
 
-    static def indexed_models
+    static indexed_models
     static SearchConfig config
     static Dictionary dic
 
@@ -39,9 +36,8 @@ class Search {
         _split(text)
     }
 
-
     static complete(type, w, options = [:]) {
-        def jedis = Search.configure().redisPool.getResource();
+        def jedis = Search.configure().redisPool.getResource()
         def limit = options["limit"] ? options['limit'] : 10
         def conditions = options['conditions'] ? options['conditions'] : []
         if (((!w || w == "") && (!conditions || conditions.isEmpty())) || (!type || "" == type))
@@ -136,7 +132,7 @@ class Search {
     //search items,this will split words by libmmseg
 
     static query(type, text, options = [:]) {
-        def jedis = Search.configure().redisPool.getResource();
+        def jedis = Search.configure().redisPool.getResource()
         def tm = System.currentTimeMillis()
         def result = []
         def limit = options['limit'] ? options['limit'] : 10
@@ -175,7 +171,7 @@ class Search {
 
             //搜索拼音
             if (Search.config.pinyin_match) {
-                def pinyin_words = Search.split_pinyin(text);
+                def pinyin_words = Search.split_pinyin(text)
                 pinyin_words = pinyin_words.collect { w ->
                     Search.mk_sets_key(type, w)
                 }
@@ -249,12 +245,12 @@ class Search {
     static private _split(text) {
         if (Search.config.disable_mmseg)
             return text.split()
-        Seg seg = new ComplexSeg(dic);
-        MMSeg mmSeg = new MMSeg(new StringReader(text), seg);
+        Seg seg = new ComplexSeg(dic)
+        MMSeg mmSeg = new MMSeg(new StringReader(text), seg)
         def words = []
-        def word = null
+        def word
         while ((word = mmSeg.next()) != null) {
-            words << word.getString();
+            words << word.getString()
         }
         return words
     }

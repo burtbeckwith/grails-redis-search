@@ -1,0 +1,7 @@
+/target
+/*.zip
+/web-inf
+/.idea
+.DS_Store
+*.log
+plugin.xml

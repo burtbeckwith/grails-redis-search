@@ -22,11 +22,9 @@ class RedisSearchGrailsPlugin {
 
     private searchMapping = [:]
 
-//    def license = "APACHE"
-//    def organization = [ name: "My Company", url: "http://www.my-company.com/" ]
-//    def developers = [ [ name: "Joe Bloggs", email: "joe@bloggs.net" ]]
-//    def issueManagement = [ system: "JIRA", url: "http://jira.grails.org/browse/GPMYPLUGIN" ]
-//    def scm = [ url: "http://svn.codehaus.org/grails-plugins/" ]
+    def license = "APACHE"
+    def issueManagement = [system: "GITHUB", url: 'https://github.com/isoloist/grails-redis-search/issues']
+    def scm = [url: 'https://github.com/isoloist/grails-redis-search']
 
     def doWithSpring = {
 //        sessionFactory(RedisSearchConfigureLocalSessionFactoryBean){ bean ->
